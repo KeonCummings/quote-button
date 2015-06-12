@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel="stylesheet" href="/stylesheets/buttons.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+	<script type="text/javascript" src="/javascripts/buttons.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href='http://fonts.googleapis.com/css?family=Crimson+Text:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+  </head>
+  <style>
+	body { 
+	    background-image: url("/images/black.gif");
+	}
+
+	#middle {
+	    margin-left: auto;
+	    margin-right: auto;
+	    width: 10%;
+	}
+
+	#white {
+		padding-top: 100px;
+		font-family: 'Oswald', sans-serif;
+		color: white;
+		font-size: 500%;
+		text-align: center;
+	}
+
+ </style>
+  
+  <body>
+  	<div id='middle'>
+  		<span id='play'>
+   			<a href="#" class="button button-3d-highlight button-circle">Press me</a>
+   		</span>
+  	</div>
+   	<div id='white'>
+   	</div>
+		
+   	<script>
+         $(document).ready(function() {
+
+	        var audioElement = document.createElement('audio');
+	        audioElement.setAttribute('src', 'http://www.myinstants.com/media/sounds/inceptionbutton.mp3');
+	        // audioElement.setAttribute('autoplay', 'autoplay');
+	        //audioElement.load()
+	        $.get();
+	        audioElement.addEventListener("load", function() {
+	        audioElement.play();
+	        }, true);
+
+
+	        $('#play').click(function() {
+	        	audioElement.play();
+	        	$.get('http://random-quotes.herokuapp.com/', function (data) {
+				  var x = data;
+				  return $('#white').text(x.body);
+				})
+	        });
+
+
+	        $('.pause').click(function() {
+	        audioElement.pause();
+	    	});
+        });
+
+	</script>  
+  </body>
+</html>
+
