@@ -26,9 +26,7 @@
 		font-size: 500%;
 		text-align: center;
 	}
-
  </style>
-  
   <body>
   	<div id='middle'>
   		<span id='play'>
@@ -37,10 +35,8 @@
   	</div>
    	<div id='white'>
    	</div>
-		
-   	<script>
+   <script>
          $(document).ready(function() {
-
 	        var audioElement = document.createElement('audio');
 	        audioElement.setAttribute('src', 'http://www.myinstants.com/media/sounds/inceptionbutton.mp3');
 	        // audioElement.setAttribute('autoplay', 'autoplay');
@@ -50,7 +46,6 @@
 	        audioElement.play();
 	        }, true);
 
-
 	        $('#play').click(function() {
 	        	audioElement.play();
 	        	$.get('http://random-quotes.herokuapp.com/', function (data) {
@@ -59,12 +54,10 @@
 				})
 	        });
 
-
 	        $('.pause').click(function() {
 	        audioElement.pause();
 	    	});
         });
-
 	</script>  
   </body>
 </html>
