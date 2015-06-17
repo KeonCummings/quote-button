@@ -10,53 +10,54 @@ var url = [];
 
 //Initialize the scraper the scraper url in the DOM
 app.get('/scrape', function(req, res){
-    //set the scraper url
-    for(var i = 1; i < 3; i++){
-    	  url.push('http://www.goodreads.com/quotes?page=' + i);
-    }
-  
-    for(i in url) {
-            request(url[i], function(error, response, html){
-            if(!error){
-                //use cheerio to use jquery to select DOM elements
-                var $ = cheerio.load(html);
-                //select DOM elements using jquery selectors
-                $('.quoteText > a').filter(function(){
-                    var data = $(this);
-                    author = data.text();
+//set the scraper url
 
-                    json.author.push(author);
-                    // all.push(data.text());
-                })
-                //select DOM elements using jquery selectors
-                $('.quoteText').filter(function(){
-                    var data = $(this);
-                    quote = data.text();
+for(var i = 1; i < 101; i++){
+	  url.push('http://www.goodreads.com/quotes?page=' + i);
+}
 
-                    json.quote.push(quote);
-                })
-            }
-            //loop through json object to clean up strings
-           
-            //write the json file to folder 
-            // fs.appendFile('output.json', JSON.stringify(json, null, 4), function(err){
-            //     console.log('File successfully written! - Check your project directory for the output.json file');
-            // })
+  	for(i in url){
+  		request(url[i], function(error, response, html){
+	        if(!error){
+	        	//use cheerio to use jquery to select DOM elements
+	            var $ = cheerio.load(html);
+	            
+	            //select DOM elements using jquery selectors
+	            $('.quoteText > a').filter(function(){
+	                var data = $(this);
+	                author = data.text();
 
-            // res.send('Check your console!')
-        })
-    }
+	                json.author.push(author);
+	                // all.push(data.text());
+	            })
+	            //select DOM elements using jquery selectors
+	            $('.quoteText').filter(function(){
+	                var data = $(this);
+	                quote = data.text();
+
+	                json.quote.push(quote);
+	            })
+	        }
+		})
+  	}
+
+  	res.send('Check your console!')
 })
 
-function cleanAuthor(jsonObject) {
-    for(var i = 0; i < jsonObject.quote.length; i++) {
-        //find the index of where the quote ends
-        endQuote = jsonObject.quote[i].indexOf("―")
-        //select only the part of the string that contains a quote
-        jsonObject.quote[i] = jsonObject.quote[i].substring(0, endQuote - 1);
-        //remove non breaking spaces from string
-        jsonObject.quote[i] = jsonObject.quote[i].replace(/(\r\n|\n|\r)/gm,"");
-    }
+function cleanUp(){
+	//loop through json object to clean up stings
+  	for(var i = 0; i < json.quote.length; i++) {
+		//find the index of where the quote ends
+		endQuote = json.quote[i].indexOf("―")
+		//select only the part of the string that contains a quote
+		json.quote[i] = json.quote[i].substring(0, endQuote - 1);
+		//remove non breaking spaces from string
+		json.quote[i] = json.quote[i].replace(/(\r\n|\n|\r)/gm,"");
+	}
+	//write the json file to folder 
+	fs.writeFile('output.json', JSON.stringify(json, null, 4), function(err){
+		console.log('File successfully written! - Check your project directory for the output.json file');
+	})
 }
 
 app.listen('8081')
