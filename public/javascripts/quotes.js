@@ -1,6 +1,6 @@
 function quotes() { 
 
-    {
+    var allQuotes = {
     "author": [
         "Stephen Chbosky",
         "Bob Marley",
@@ -3366,4 +3366,5 @@ function quotes() {
         "      “Some lose all mind and become soul,insane.some lose all soul and become mind, intellectual.some lose both and become accepted”   "
     ]
     }
-}
+    return allQuotes;
+};
