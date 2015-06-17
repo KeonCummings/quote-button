@@ -6,7 +6,7 @@ quoteData = function(){
         "Marilyn Monroe": "      “I don't know who invented high heels, but all women owe him a lot!”   ",
         "J.R.R. Tolkien": "      “Do you wish me a good morning, or mean that it is a good morning whether I want it or not; or that you feel good this morning; or that it is a morning to be good on?”   ",
         "Maurice Switzer": "      “It is better to remain silent at the risk of being thought a fool, than to talk and remove all doubt of it.”   ",
-        "Albert Einquotesstein": "      “There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”   ",
+        "Albert Einstein": "      “There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”   ",
         "Jane Austen": "      “Ah! There is nothing like staying at home, for real comfort.”   ",
         "Allen Saunders": "      “Life is what happens to you while you're busy making other plans.”   ",
         "John Green": "      “The pleasure of remembering had been taken from me, because there was no longer anyone to remember with. It felt like losing your co-rememberer meant losing the memory itself, as if the things we'd done were less real and important than they had been hours before.”   ",
