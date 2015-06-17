@@ -7,10 +7,13 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link href='http://fonts.googleapis.com/css?family=Crimson+Text:700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Quote Robot" />
+	
   </head>
   <style>
 	body { 
-	    background-image: url("/images/black.gif");
+	    background-color: black;
 	}
 
 	#middle {
@@ -26,39 +29,61 @@
 		font-size: 500%;
 		text-align: center;
 	}
+
+	#author {
+		padding-top: 100px;
+		font-family: 'Rock Salt', cursive;
+		color: white;
+		font-size: 200%;
+		text-align: right;
+	}
+
+
+
  </style>
   <body>
+  	<!-- Go to www.addthis.com/dashboard to customize your tools -->
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-546f714f3c219ec8" async="async"></script>
   	<div id='middle'>
   		<span id='play'>
    			<a href="#" class="button button-3d-highlight button-circle">Press me</a>
    		</span>
   	</div>
-   	<div id='white'>
-   	</div>
+  	<!-- Go to www.addthis.com/dashboard to customize your tools -->
+	<div class="addthis_native_toolbox"></div>
+   	<div id='white'></div>
+   	<div id='author'></div>
+
+   <script src="/javascripts/allQuotes.js"></script>  
    <script>
+		 var allData = quoteData();
+   		 authorData = [];
+   		 for(var authors in  allData) {
+   		 	authorData.push(authors)
+	 	 }
          $(document).ready(function() {
-	        var audioElement = document.createElement('audio');
-	        audioElement.setAttribute('src', 'http://www.myinstants.com/media/sounds/inceptionbutton.mp3');
+	        // var audioElement = document.createElement('audio');
+	        // audioElement.setAttribute('src', 'http://www.myinstants.com/media/sounds/inceptionbutton.mp3');
 	        // audioElement.setAttribute('autoplay', 'autoplay');
-	        //audioElement.load()
-	        $.get();
-	        audioElement.addEventListener("load", function() {
-	        audioElement.play();
-	        }, true);
-
+	        // //audioElement.load()
+	        // $.get();
+	        // audioElement.addEventListener("load", function() {
+	        // audioElement.play();
+	        // }, true);
 	        $('#play').click(function() {
-	        	audioElement.play();
-	        	$.get('http://random-quotes.herokuapp.com/', function (data) {
-				  var x = data;
-				  return $('#white').text(x.body);
-				})
-	        });
+	        	// audioElement.play();
+	        	var randomNumber = Math.floor((Math.random() * 519) + 1)
+	        	quote = allData[authorData[randomNumber]]
+	        	$('head').append('<meta property="og:description" content=' + quote + '/>');
+				$('#white').text(quote);
+				$('#author').text('-' + authorData[randomNumber]);
+			})
 
-	        $('.pause').click(function() {
-	        audioElement.pause();
-	    	});
+	     //    $('.pause').click(function() {
+	     //    	audioElement.pause();
+	    	// });
         });
-	</script>  
-  </body>
+	</script>  	
+</body>
 </html>
 
