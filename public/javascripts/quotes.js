@@ -8,7 +8,7 @@ exports.allQuotes = function()
         "Marilyn Monroe",
         "J.R.R. Tolkien",
         "Maurice Switzer",
-        "Albert Einquotesstein",
+        "Albert Einstein",
         "Jane Austen",
         "Allen Saunders",
         "John Green",

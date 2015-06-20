@@ -13,7 +13,7 @@ app.get('/scrape', function(req, res){
 //set the scraper url
 
 for(var i = 1; i < 101; i++){
-	  url.push('http://www.goodreads.com/quotes?page=' + i);
+	 url.push('http://www.goodreads.com/quotes?page=' + i);
 }
 
   	for(i in url){
