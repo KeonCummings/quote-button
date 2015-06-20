@@ -1,23 +1,25 @@
 fs = require('fs');
 var quotes = require('./quotes.js');
 var exportedQuotes = quotes.allQuotes();
+var allAuthors = exportedQuotes.author;
+var uniqs = {};
 var fullQuote = {};
-authors = [];
-quoteList = [];
 
-for(i in quotes.quote){
-	authors.push(quotes.authors[i])
+for(var i = 0; i < allAuthors.length ; i++){
+		fullQuote[allAuthors[i]] = null;
 }
+var uniqAuthors = Object.keys(uniqs);
 
-for(i in exportedQuotes.author) {
-	var dupCounter = 1;
-	//needed for duplicate authors, if the author is a duplicate 
-	if(exportedQuotes.author[i] == authors[i] ) {
-		dupCounter = dupCounter + 1;
-		fullQuote[exportedQuotes.author[i]] = [];
-		fullQuote[exportedQuotes.author[i]].push(fullQuote[exportedQuotes.quote[i]]);
+for(var i = 0; i < Object.keys(fullQuote).length; i++){
+	for(var j = 0; j < exportedQuotes.author.length; j++){
+		if(Object.keys(fullQuote)[i] == exportedQuotes.author[j]){
+			if(fullQuote[exportedQuotes.author[j]] == null){
+				fullQuote[exportedQuotes.author[j]] = [exportedQuotes.quote[j]]
+			} else {
+				fullQuote[exportedQuotes.author[j]].push(exportedQuotes.quote[j])
+			}
+		}
 	}
-		fullQuote[exportedQuotes.author[i]] = exportedQuotes.quote[i];
 }
 
 // fs.writeFile('allQuotes.js', JSON.stringify(fullQuote, null, 4));

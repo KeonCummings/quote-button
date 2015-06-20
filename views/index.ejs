@@ -37,7 +37,10 @@
 		font-size: 200%;
 		text-align: right;
 	}
-  </style>
+
+
+ </style>
+ 
   <body>
   	<!-- Go to www.addthis.com/dashboard to customize your tools -->
 	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-546f714f3c219ec8" async="async"></script>
@@ -58,6 +61,7 @@
    		 for(var authors in  allData) {
    		 	authorData.push(authors)
 	 	 }
+	 	 var quote;
          $(document).ready(function() {
 	        // var audioElement = document.createElement('audio');
 	        // audioElement.setAttribute('src', 'http://www.myinstants.com/media/sounds/inceptionbutton.mp3');
@@ -69,9 +73,15 @@
 	        // }, true);
 	        $('#play').click(function() {
 	        	// audioElement.play();
-	        	var randomNumber = Math.floor((Math.random() * 519) + 1)
-	        	quote = allData[authorData[randomNumber]]
-	        	$('head').append('<meta property="og:description" content=' + quote + '/>');
+	        	var randomNumber = Math.floor((Math.random() * 518) + 1);
+	        	var longWinded = allData[authorData[randomNumber]].length
+	        	var randomNumber2 = Math.floor((Math.random() * longWinded))
+	        	if(allData[authorData[randomNumber]].length > 1) {
+	        		quote = allData[authorData[randomNumber]][randomNumber2]
+	        	} else{
+	        		quote = allData[authorData[randomNumber]][0]
+	        	}	
+	        	// $('head').append('<meta property="og:description" content=' + quote + '/>');
 				$('#white').text(quote);
 				$('#author').text('-' + authorData[randomNumber]);
 			})
