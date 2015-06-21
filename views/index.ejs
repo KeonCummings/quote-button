@@ -40,7 +40,7 @@
 
 
  </style>
- 
+
   <body>
   	<!-- Go to www.addthis.com/dashboard to customize your tools -->
 	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-546f714f3c219ec8" async="async"></script>
@@ -56,39 +56,34 @@
 
    <script src="/javascripts/allQuotes.js"></script>  
    <script>
-		 var allData = quoteData();
+   		 //call the quoteData function to bring in all quotes into the DOM
+   		 var allData = quoteData();
+   		 //Initialize empty list of authors
    		 authorData = [];
+   		 //put all the authors name in the authorData list
    		 for(var authors in  allData) {
    		 	authorData.push(authors)
 	 	 }
+	 	 //Initialize empty quote variable to hold the value of the current quote
 	 	 var quote;
          $(document).ready(function() {
-	        // var audioElement = document.createElement('audio');
-	        // audioElement.setAttribute('src', 'http://www.myinstants.com/media/sounds/inceptionbutton.mp3');
-	        // audioElement.setAttribute('autoplay', 'autoplay');
-	        // //audioElement.load()
-	        // $.get();
-	        // audioElement.addEventListener("load", function() {
-	        // audioElement.play();
-	        // }, true);
 	        $('#play').click(function() {
-	        	// audioElement.play();
+	        	//get a random number to pick an author from the author list
 	        	var randomNumber = Math.floor((Math.random() * 518) + 1);
+	        	//get a random number to subset authors that have more than one quote
 	        	var longWinded = allData[authorData[randomNumber]].length
+	        	//get a random number to subset array of authors with more than one quote
 	        	var randomNumber2 = Math.floor((Math.random() * longWinded))
+	        	//Checks wheter or not the author has more than one quote and subsets quote list based on that rule
 	        	if(allData[authorData[randomNumber]].length > 1) {
 	        		quote = allData[authorData[randomNumber]][randomNumber2]
 	        	} else{
 	        		quote = allData[authorData[randomNumber]][0]
 	        	}	
-	        	// $('head').append('<meta property="og:description" content=' + quote + '/>');
+	        	//SET QUOTE AND AUTHOR IN DOM
 				$('#white').text(quote);
 				$('#author').text('-' + authorData[randomNumber]);
 			})
-
-	     //    $('.pause').click(function() {
-	     //    	audioElement.pause();
-	    	// });
         });
 	</script>  	
 </body>
