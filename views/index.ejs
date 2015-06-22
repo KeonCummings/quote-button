@@ -55,7 +55,7 @@
    	<div id='white'></div>
    	<div id='author' class= "hvr-underline-reveal"></div>
    	<div id="wikipediaContainer"</div>
-	<script src="/javascripts/bundle.js"></script>
+<!-- 	// <script src="/javascripts/bundle.js"></script> -->
   	<script src="/javascripts/allQuotes.js"></script>  
    <script>
    		 //call the quoteData function to bring in all quotes into the DOM
@@ -83,14 +83,9 @@
 	        	} else{
 	        		quote = allData[authorData[randomNumber]][0]
 	        	}	
-	        	wikipedia.page.data(authorData[randomNumber].replace(/\s+/g, '_'), { content: true }, function(response) {
-	        		var $ = cheerio.load(response.text['*']);
-	        		$('#wikipediaContainer'.text($('p').text()));
-				});
 	        	//SET QUOTE AND AUTHOR IN DOM
 				$('#white').text(quote);
 				$('#author').text('-' + authorData[randomNumber]);
-				
 			})
         });
 	</script>  	
