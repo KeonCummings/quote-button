@@ -54,9 +54,9 @@
 	<div class="addthis_native_toolbox"></div>
    	<div id='white'></div>
    	<div id='author' class= "hvr-underline-reveal"></div>
-   	<div id="demo2" class="wikipediaContainer"><div class="bg"></div></div>
-
-   <script src="/javascripts/allQuotes.js"></script>  
+   	<div id="wikipediaContainer"</div>
+	<script src="/javascripts/bundle.js"></script>
+  	<script src="/javascripts/allQuotes.js"></script>  
    <script>
    		 //call the quoteData function to bring in all quotes into the DOM
    		 var allData = quoteData();
@@ -66,6 +66,7 @@
    		 for(var authors in  allData) {
    		 	authorData.push(authors)
 	 	 }
+
 	 	 //Initialize empty quote variable to hold the value of the current quote
 	 	 var quote;
          $(document).ready(function() {
@@ -82,9 +83,14 @@
 	        	} else{
 	        		quote = allData[authorData[randomNumber]][0]
 	        	}	
+	        	wikipedia.page.data(authorData[randomNumber].replace(/\s+/g, '_'), { content: true }, function(response) {
+	        		var $ = cheerio.load(response.text['*']);
+	        		$('#wikipediaContainer'.text($('p').text()));
+				});
 	        	//SET QUOTE AND AUTHOR IN DOM
 				$('#white').text(quote);
 				$('#author').text('-' + authorData[randomNumber]);
+				
 			})
         });
 	</script>  	
