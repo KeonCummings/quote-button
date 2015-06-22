@@ -1,3 +1,4 @@
+//This is the main quote list, the result of scraping goodreads.com for the top 100 pages of quotes then coping them to a JSON object
 exports.allQuotes = function() 
 {
     quotes = { 

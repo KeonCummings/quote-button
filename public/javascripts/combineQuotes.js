@@ -33,7 +33,5 @@ for(var i = 0; i < Object.keys(fullQuote).length; i++){
 	}
 }
 
-//recursive call to unique authors
-
 
 // fs.writeFile('allQuotes.js', JSON.stringify(fullQuote, null, 4));

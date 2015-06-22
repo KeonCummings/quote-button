@@ -1,3 +1,4 @@
+//This is the main quote delivarable, a hard coded javascript onject to be referred to by the index.ejs page.
 function quoteData() {
     var allQuotes = {
         "Stephen Chbosky": [
@@ -2718,5 +2719,4 @@ function quoteData() {
         ]
     }
     return(allQuotes);
->>>>>>> 391e298e6b488c41ffab14f607e59b5304eacd35
 }
